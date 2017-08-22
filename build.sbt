@@ -29,14 +29,13 @@ libraryDependencies ++= Seq(
   "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
   "org.scalatra" %% "scalatra-json" % ScalatraVersion,
   "org.json4s"   %% "json4s-jackson" % "3.5.0",
-  "com.sksamuel.elastic4s" %% "elastic4s-core" % elastic4sVersion,
-  // for the http client
-  "com.sksamuel.elastic4s" %% "elastic4s-http" % elastic4sVersion,
-  "com.sksamuel.elastic4s" %% "elastic4s-tcp" % elastic4sVersion,
-  // https://mvnrepository.com/artifact/com.sksamuel.elastic4s/elastic4s-jackson_2.11
-  "com.sksamuel.elastic4s" % "elastic4s-jackson_2.12" % elastic4sVersion,
-  "org.scaldi" %% "scaldi" % "0.5.8"
+  "com.fasterxml.jackson.dataformat" % "jackson-dataformat-cbor" % "2.8.4",
+  "com.fasterxml.jackson.dataformat" % "jackson-dataformat-smile" % "2.8.4",
+  "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
 )
+
+libraryDependencies +=
+  "org.elasticsearch" % "elasticsearch" % "2.3.5" excludeAll(ExclusionRule ( organization = "com.fasterxml.jackson.dataformat"))
 
 scalateTemplateConfig in Compile := {
   val base = (sourceDirectory in Compile).value
