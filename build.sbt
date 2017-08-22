@@ -31,7 +31,8 @@ libraryDependencies ++= Seq(
   "org.json4s"   %% "json4s-jackson" % "3.5.0",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-cbor" % "2.8.4",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-smile" % "2.8.4",
-  "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
+  "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4",
+  "org.apache.kafka" % "kafka-clients" % "0.11.0.0"
 )
 
 libraryDependencies +=
