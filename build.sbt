@@ -2,6 +2,7 @@ import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import ScalateKeys._
 
+
 val ScalatraVersion = "2.5.1"
 
 val elastic4sVersion = "5.4.0"
@@ -20,19 +21,26 @@ scalaVersion := "2.12.3"
 
 resolvers += Classpaths.typesafeReleases
 
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
+
+mainClass in assembly := Some("com.egen.app.Launcher")
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
   "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "1.1.5" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
+  "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210",
   "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
   "org.scalatra" %% "scalatra-json" % ScalatraVersion,
   "org.json4s"   %% "json4s-jackson" % "3.5.0",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-cbor" % "2.8.4",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-smile" % "2.8.4",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4",
-  "org.apache.kafka" % "kafka-clients" % "0.11.0.0"
+  "org.apache.kafka" % "kafka-clients" % "0.11.0.0",
+  "org.scala-lang" % "scala-library" % ScalatraVersion % "runtime"
 )
 
 libraryDependencies +=
